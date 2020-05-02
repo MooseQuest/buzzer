@@ -38,3 +38,5 @@ Join a team                | Buzz in                   | Host view              
 ## License
 
 MIT
+
+## modified for MQ-Web
