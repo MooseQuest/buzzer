@@ -120,4 +120,39 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(8090, () => console.log('Listening on 8090'))
+// defining views
+
+// Define routes.
+app.get('/',
+  require('connect-ensure-login').ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('index.pug', { user: req.user });
+  });
+
+
+app.get('/login',
+  function(req, res){
+    res.render('login.ejs');
+  });
+  
+app.post('/login', 
+  passport.authenticate('local', { successReturnToOrRedirect: '/guest', failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+  
+app.get('/logout',
+  function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
+app.get('/profile',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('profile.ejs', { user: req.user });
+  });
+
+app.get('/host', require('connect-ensure-login').ensureLoggedIn(), (req, res) => res.render('host.pug', Object.assign({ title }, getData())))
+
+server.listen(8090, () => console.log('Listening on 8090, click here: http://localhost:8090'))
