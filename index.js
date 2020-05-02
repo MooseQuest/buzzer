@@ -6,7 +6,7 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
-const title = 'Buffer Buzzer'
+const title = 'MQ GameShow Buzzer'
 
 let data = {
   users: new Set(),
