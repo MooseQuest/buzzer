@@ -1,6 +1,7 @@
 var records = [
     { id: 1, username: 'guest', password: 'moosequestisthebest', displayName: 'Guest', emails: [ { value: 'junk@moosequest.net' } ] }
   , { id: 2, username: 'host', password: 'am3ricaonline', displayName: 'Host', emails: [ { value: 'junk@moosequest.net' } ] }
+  , { id: 3, username: 'guest2', password: 'gameshow', displayName: 'Guest2', emails: [ { value: 'junk@moosequest.net' } ] }
 ];
 
 exports.findById = function(id, cb) {
